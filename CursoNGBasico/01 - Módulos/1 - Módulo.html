@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html ng-app="minhaApp">
+<head>
+    <title>Módulos</title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+
+    <script>
+        //criando módulo -- Nome e dependências como array de strings
+        angular.module("minhaApp", []);
+
+        //usando o módulo
+        var meuModulo = angular.module("minhaApp");
+        console.log(typeof meuModulo);
+        console.log(meuModulo.name);
+    </script>
+</body>
+</html>

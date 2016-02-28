@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="00 - HelloWorld\2 - Expressões.html" />
     <Content Include="00 - HelloWorld\1 - HelloWorld.html" />
+    <Content Include="01 - Módulos\1 - Módulo.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />

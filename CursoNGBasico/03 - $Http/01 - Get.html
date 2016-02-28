@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
     <title>HTTP GET</title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <script src="../Scripts/angular.min.js"></script>
 </head>
 <body>
@@ -38,8 +38,9 @@
         (function () {
             "use strict";
 
+            //["$scope", "$http", PersonController] => para não dar erro qdo for minificado
             angular.module("app", [])
-                .controller("personcontroller",PersonController);
+                .controller("personcontroller", ["$scope", "$http", PersonController]);
 
 
             function PersonController($scope, $http) {
@@ -54,7 +55,7 @@
 
 
                 $http.get("https://api.github.com/users/fnalin")
-                    .then(onUserComplete,onError);
+                    .then(onUserComplete, onError);
 
             };
 

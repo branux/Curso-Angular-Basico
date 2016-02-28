@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Models</title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Models</h1>
+    <div ng-controller="personcontroller">
+
+        <div>
+            ID:
+            {{person.id}}
+        </div>
+
+        <div>
+            Nome:
+            {{person.name}}
+        </div>
+
+        <div>
+            Idade:
+            {{person.age}}
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            angular.module("app", [])
+                .controller("personcontroller", function ($scope) {
+                    var person = { id: 10, name: "Fabiano Nalin", age: 36 };
+                    $scope.person = person;
+                });
+
+        }());
+    </script>
+</body>
+</html>

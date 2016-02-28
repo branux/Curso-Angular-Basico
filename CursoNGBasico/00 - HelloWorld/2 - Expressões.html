@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html ng-app ng-init="texto='Um texto qualquer'">
+<head>
+    <title>Expressões</title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Expressões com NG</h1>
+    <div>
+        <p>{{texto}}</p>
+        <p>
+            Total de caracteres em texto:
+            <strong>
+                <span>
+                    {{texto.length}}
+                </span>
+            </strong>
+        </p>
+    </div>
+    <div>
+        20/2,5 = {{20/2.5}}
+    </div>
+</body>
+</html>

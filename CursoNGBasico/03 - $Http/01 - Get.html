@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>HTTP GET</title>
+	<meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Usando HttpGet</h1>
+    <div ng-controller="personcontroller">
+
+        <div ng-show="error.length>0">
+            Erro:
+            {{error}}
+        </div>
+
+        <div ng-hide="error.length>0">
+            <div>
+                ID:
+                {{user.id}}
+            </div>
+            <div>
+                Login:
+                {{user.login}}
+            </div>
+            <div>
+                Nome:
+                {{user.name}}
+            </div>
+
+            <div>
+                <img ng-src="{{user.avatar_url}}" alt="{{user.name}}" title="{{user.name}}" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            angular.module("app", [])
+                .controller("personcontroller",PersonController);
+
+
+            function PersonController($scope, $http) {
+
+                var onUserComplete = function (response) {
+                    $scope.user = response.data;
+                };
+
+                var onError = function (data) {
+                    $scope.error = "Não foi possível obter os dados deste usuário!";
+                };
+
+
+                $http.get("https://api.github.com/users/fnalin")
+                    .then(onUserComplete,onError);
+
+            };
+
+
+        }());
+    </script>
+</body>
+</html>

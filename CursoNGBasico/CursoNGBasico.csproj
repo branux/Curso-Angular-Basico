@@ -71,6 +71,7 @@
     <Content Include="01 - Módulos\1 - Módulo.html" />
     <Content Include="02 - Controllers\01 - Estrutura.html" />
     <Content Include="02 - Controllers\02 - Usando objetos no model.html" />
+    <Content Include="03 - %24Http\01 - Get.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />

@@ -82,6 +82,7 @@
     <Content Include="04 - Directives\1 - Expressões vs ng-model.html" />
     <Content Include="05 - Services\2 - %24log.html" />
     <Content Include="05 - Services\1 - %24interval.html" />
+    <Content Include="05 - Services\4- service-factory.html" />
     <Content Include="05 - Services\3 - %24anchor e %24location.html" />
     <Content Include="05 - Services\_reposdetails.html" />
     <Content Include="packages.config" />

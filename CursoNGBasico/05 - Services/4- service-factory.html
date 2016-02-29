@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Services</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Usando Services</h1>
+    <div ng-controller="personcontroller">
+
+        <div ng-show="error.length>0">
+            Erro:
+            {{error}}
+        </div>
+
+
+        <div ng-show="countdown>0">
+            Busca automática em:
+            <strong>{{countdown}}</strong>
+        </div>
+        <form ng-submit="search(user.login)">
+            <input type="search" required ng-model="user.login" autofocus placeholder="login do usuário" />
+            <input type="submit" value="Search" />
+        </form>
+        <br />
+        <div ng-hide="error.length>0">
+            <div>
+                ID:
+                {{user.id}}
+            </div>
+            <div>
+                Login:
+                {{user.login}}
+            </div>
+            <div>
+                Nome:
+                {{user.name}}
+            </div>
+
+            <div>
+                <img ng-src="{{user.avatar_url}}" alt="{{user.name}}" title="{{user.name}}" />
+            </div>
+            <div id="details" ng-include="'_reposdetails.html'"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            //["$scope", "$http", PersonController] => para não dar erro qdo for minificado
+            angular.module("app", [])
+                .controller("personcontroller",
+                    ["$scope", "$interval", "$log", "$anchorScroll", "$location", "githubservice", PersonController])
+                .factory("githubservice", ["$http", GitHubService]);
+
+
+            function PersonController($scope, $interval, $log, $anchorScroll, $location, githubservice) {
+
+                var onUserComplete = function (data) {
+                    $scope.user = data;
+                    $scope.error = "";
+
+                    githubservice.getRepos($scope.user.repos_url)
+                        .then(onRepos, onError);
+
+                };
+
+                var onRepos = function (data) {
+                    $scope.repositorios = data;
+                    $location.hash("details");
+                    $anchorScroll();
+                };
+
+                var onError = function (data) {
+                    $scope.error = "Não foi possível obter os dados deste usuário!";
+                };
+
+                var decrementCountdown = function () {
+                    $scope.countdown -= 1;
+                    if ($scope.countdown < 1) {
+                        $scope.search(dados.login);
+                    }
+                };
+
+                var countDownInterval = null;
+                var startCountDown = function () {
+                    countDownInterval = $interval(decrementCountdown, 1000, $scope.countdown);
+                };
+
+                $scope.search = function (user) {
+                    $log.info("Buscando por " + user);
+
+                    githubservice.getUser(user).then(onUserComplete, onError);
+
+                    if (countDownInterval) {
+                        $interval.cancel(countDownInterval);
+                        $scope.countdown = 0;
+                    }
+                };
+
+
+
+                var dados = {};
+                dados.login = "fnalin";
+
+                $scope.reposOrder = "name";
+                $scope.countdown = 5;
+
+                $scope.user = dados;
+                startCountDown();
+
+            };
+
+            function GitHubService($http) {
+
+                var getUser = function (username) {
+                    return $http.get("https://api.github.com/users/" + username)
+                        .then(function (response) {
+                            return response.data;
+                        });
+                };
+
+                var getRepos = function (url) {
+                    return $http.get(url)
+                        .then(function (response) {
+                            return response.data;
+                        });
+                };
+
+                return {
+                    getUser: getUser,
+                    getRepos: getRepos
+                };
+            };
+
+        }());
+    </script>
+</body>
+</html>

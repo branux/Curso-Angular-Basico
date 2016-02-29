@@ -74,6 +74,7 @@
     <Content Include="03 - %24Http\01 - Get.html" />
     <Content Include="04 - Directives\5.1 - filters.html" />
     <Content Include="04 - Directives\5.2 - filters.html" />
+    <Content Include="04 - Directives\6.1 - ng-include.html" />
     <Content Include="04 - Directives\5.3 - filters.html" />
     <Content Include="04 - Directives\4 - ng-repeat.html" />
     <Content Include="04 - Directives\3 - ng-submit.html" />
@@ -84,6 +85,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="04 - Directives\6.2 - details.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

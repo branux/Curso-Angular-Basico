@@ -80,6 +80,7 @@
     <Content Include="04 - Directives\3 - ng-submit.html" />
     <Content Include="04 - Directives\2 - ng-click.html" />
     <Content Include="04 - Directives\1 - Expressões vs ng-model.html" />
+    <Content Include="05 - Services\2 - %24log.html" />
     <Content Include="05 - Services\1 - %24interval.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-mocks.js" />

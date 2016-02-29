@@ -15,9 +15,9 @@
         </div>
 
 
-        <form>
-            <input type="search" required ng-model="user.login" />
-            <input type="submit" ng-click="search(user.login)" value="Search" autofocus placeholder="login do usuário" />
+        <form ng-submit="search(user.login)">
+            <input type="search" required ng-model="user.login" autofocus placeholder="login do usuário" />
+            <input type="submit" value="Search" />
         </form>
 
         <div ng-hide="error.length>0">

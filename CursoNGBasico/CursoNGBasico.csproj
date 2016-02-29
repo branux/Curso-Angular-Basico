@@ -72,6 +72,7 @@
     <Content Include="02 - Controllers\01 - Estrutura.html" />
     <Content Include="02 - Controllers\02 - Usando objetos no model.html" />
     <Content Include="03 - %24Http\01 - Get.html" />
+    <Content Include="04 - Directives\3 - ng-submit.html" />
     <Content Include="04 - Directives\2 - ng-click.html" />
     <Content Include="04 - Directives\1 - Expressões vs ng-model.html" />
     <Content Include="packages.config" />

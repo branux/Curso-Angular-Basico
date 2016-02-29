@@ -1,0 +1,31 @@
+﻿<h3>Repositórios do {{user.name}}</h3>
+<div>
+    Orderby:
+    <select ng-model="reposOrder">
+        <option value="name">Nome</option>
+        <option value="-name">Nome Desc</option>
+        <option value="stargazers_count">Estrelas</option>
+        <option value="-stargazers_count">Estrelas Desc</option>
+        <option value="language">Linguagem</option>
+        <option value="-language">Linguagem Desc</option>
+    </select>
+
+    Filtrar: <input type="search" ng-model="reposFilter" />
+</div>
+<br> <br>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Estrelas</th>
+            <th>Linguagem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="repositorio in repositorios | orderBy:reposOrder | filter:reposFilter">
+            <td>{{repositorio.name}}</td>
+            <td>{{repositorio.stargazers_count | number}}</td>
+            <td>{{repositorio.language}}</td>
+        </tr>
+    </tbody>
+</table>

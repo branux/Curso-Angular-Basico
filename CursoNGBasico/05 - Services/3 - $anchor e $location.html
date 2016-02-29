@@ -41,7 +41,7 @@
             <div>
                 <img ng-src="{{user.avatar_url}}" alt="{{user.name}}" title="{{user.name}}" />
             </div>
-            <div ng-include="'_reposdetails.html'"></div>
+            <div id="details" ng-include="'_reposdetails.html'"></div>
         </div>
     </div>
 
@@ -51,10 +51,11 @@
 
             //["$scope", "$http", PersonController] => para não dar erro qdo for minificado
             angular.module("app", [])
-                .controller("personcontroller", ["$scope", "$http", "$interval", PersonController]);
+                .controller("personcontroller",
+                    ["$scope", "$http", "$interval", "$log", "$anchorScroll", "$location", PersonController]);
 
 
-            function PersonController($scope, $http, $interval) {
+            function PersonController($scope, $http, $interval, $log, $anchorScroll, $location) {
 
                 var onUserComplete = function (response) {
                     $scope.user = response.data;
@@ -65,6 +66,8 @@
 
                 var onRepos = function (response) {
                     $scope.repositorios = response.data;
+                    $location.hash("details");
+                    $anchorScroll();
                 };
 
                 var onError = function (data) {
@@ -78,13 +81,20 @@
                     }
                 };
 
+                var countDownInterval = null;
                 var startCountDown = function () {
-                    $interval(decrementCountdown, 1000, $scope.countdown);
+                    countDownInterval = $interval(decrementCountdown, 1000, $scope.countdown);
                 };
 
                 $scope.search = function (user) {
+                    $log.info("Buscando por " + user);
                     $http.get("https://api.github.com/users/" + user)
                         .then(onUserComplete, onError);
+
+                    if (countDownInterval) {
+                        $interval.cancel(countDownInterval);
+                        $scope.countdown = 0;
+                    }
                 };
 
 

@@ -72,6 +72,9 @@
     <Content Include="02 - Controllers\01 - Estrutura.html" />
     <Content Include="02 - Controllers\02 - Usando objetos no model.html" />
     <Content Include="03 - %24Http\01 - Get.html" />
+    <Content Include="04 - Directives\5.1 - filters.html" />
+    <Content Include="04 - Directives\5.2 - filters.html" />
+    <Content Include="04 - Directives\5.3 - filters.html" />
     <Content Include="04 - Directives\4 - ng-repeat.html" />
     <Content Include="04 - Directives\3 - ng-submit.html" />
     <Content Include="04 - Directives\2 - ng-click.html" />

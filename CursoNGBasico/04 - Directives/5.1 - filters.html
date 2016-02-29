@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Diretivas</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Usando Diretivas</h1>
+    <div ng-controller="personcontroller">
+
+        <div ng-show="error.length>0">
+            Erro:
+            {{error}}
+        </div>
+
+
+        <form ng-submit="search(user.login)">
+            <input type="search" required ng-model="user.login" autofocus placeholder="login do usuário" />
+            <input type="submit" value="Search" />
+        </form>
+
+        <div ng-hide="error.length>0">
+            <div>
+                ID:
+                {{user.id}}
+            </div>
+            <div>
+                Login:
+                {{user.login}}
+            </div>
+            <div>
+                Nome:
+                {{user.name}}
+            </div>
+
+            <div>
+                <img ng-src="{{user.avatar_url}}" alt="{{user.name}}" title="{{user.name}}" />
+            </div>
+            <div>
+                <h3>Repositórios do {{user.name}}</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Estrelas</th>
+                            <th>Linguagem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="repositorio in repositorios | orderBy:'-name'">
+                            <td>{{repositorio.name}}</td>
+                            <td>{{repositorio.stargazers_count | number}}</td>
+                            <td>{{repositorio.language}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            //["$scope", "$http", PersonController] => para não dar erro qdo for minificado
+            angular.module("app", [])
+                .controller("personcontroller", ["$scope", "$http", PersonController]);
+
+
+            function PersonController($scope, $http) {
+
+                var onUserComplete = function (response) {
+                    $scope.user = response.data;
+                    $scope.error = "";
+                    $http.get($scope.user.repos_url)
+                        .then(onRepos, onError);
+                };
+
+                var onRepos = function (response) {
+                    $scope.repositorios = response.data;
+                };
+
+                var onError = function (data) {
+                    $scope.error = "Não foi possível obter os dados deste usuário!";
+                };
+
+                $scope.search = function (user) {
+                    $http.get("https://api.github.com/users/" + user)
+                        .then(onUserComplete, onError);
+                };
+
+                var dados = {};
+                dados.login = "fnalin";
+
+
+                $scope.user = dados;
+                $scope.search(dados.login);
+
+            };
+
+
+        }());
+    </script>
+</body>
+</html>

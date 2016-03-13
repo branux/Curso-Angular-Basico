@@ -6,7 +6,7 @@
 </head>
 <body ng-controller="MainController">
 
-    <fn-contato contato="c" ng-repeat="c in contatos"></fn-contato>
+    <fn-contato dado="d" ng-repeat="d in dados"></fn-contato>
 
     <script src="../Scripts/angular.min.js"></script>
     <script>
@@ -20,12 +20,12 @@
             function FNContato() {
                 return {
                     templateUrl: '_template.html',
-                    scope: { contato: "=" },
+                    scope: { dado: "=" },
                 };
             };
 
             function MainController($scope) {
-                $scope.contatos = [
+                $scope.dados = [
                     { nome: "Fabiano Alberto", sobrenome: "Nalin" },
                     { nome: "Isabel Aparecida", sobrenome: "Silva" },
                     { nome: "Rafael Pereira", sobrenome: "Goes" },

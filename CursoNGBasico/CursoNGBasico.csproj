@@ -94,10 +94,10 @@
     <Content Include="06 - Route\pages\main\error-404.html" />
     <Content Include="06 - Route\pages\main\index.html" />
     <Content Include="06 - Route\pages\shared\menu.html" />
-    <Content Include="07- Custom Directives\3 - Repeat.html" />
-    <Content Include="07- Custom Directives\2 - TemplateUrl.html" />
-    <Content Include="07- Custom Directives\1 - Basic.html" />
-    <Content Include="07- Custom Directives\_template.html" />
+    <Content Include="07 - Custom Directives\3 - Repeat.html" />
+    <Content Include="07 - Custom Directives\2 - TemplateUrl.html" />
+    <Content Include="07 - Custom Directives\1 - Basic.html" />
+    <Content Include="07 - Custom Directives\_template.html" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />

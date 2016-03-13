@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Diretivas</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="MainController">
+
+    <fn-contato contato="c" ng-repeat="c in contatos"></fn-contato>
+
+    <script src="../Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+
+            angular.module("app", [])
+                .directive("fnContato", [FNContato])
+                .controller("MainController", ["$scope", MainController]);
+
+            function FNContato() {
+                return {
+                    templateUrl: '_template.html',
+                    scope: { contato: "=" },
+                };
+            };
+
+            function MainController($scope) {
+                $scope.contatos = [
+                    { nome: "Fabiano Alberto", sobrenome: "Nalin" },
+                    { nome: "Isabel Aparecida", sobrenome: "Silva" },
+                    { nome: "Rafael Pereira", sobrenome: "Goes" },
+                ];
+            };
+        }());
+    </script>
+</body>
+</html>

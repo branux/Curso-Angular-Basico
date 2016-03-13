@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Diretivas</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="MainController">
+    <h2>Diretiva como tag</h2>
+    <fn-contato></fn-contato>
+    <hr />
+    <h2>Diretiva como atributo</h2>
+    <div fn-contato></div>
+    <hr />
+    <h2>Diretiva na class</h2>
+    <div class="fnContato"></div>
+
+    <script src="../Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+
+            angular.module("app", [])
+                .directive("fnContato",[FNContato])
+                .controller("MainController", ["$scope", MainController]);
+
+            function FNContato() {
+                return {
+                    template:'<div>Nome: {{contato.nome}} | Sobrenome: {{contato.sobrenome}}</div>'
+                };
+            };
+
+            function MainController($scope) {
+                $scope.contato = { nome: "Fabiano Alberto", sobrenome: "Nalin" };
+            };
+        }());
+    </script>
+</body>
+</html>

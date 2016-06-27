@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Models</title>
+    <meta charset="utf-8" />
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <h1>Models</h1>
+    <div ng-controller="personcontroller as vm">
+
+        <div>
+            ID:
+            {{vm.person.id}}
+        </div>
+
+        <div>
+            Nome:
+            {{vm.person.name}}
+        </div>
+
+        <div>
+            Idade:
+            {{vm.person.age}}
+        </div>
+
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            angular.module("app", [])
+                .controller("personcontroller", function () {
+                    var person = { id: 10, name: "Fabiano Nalin", age: 36 };
+                    this.person = person;
+                });
+
+        }());
+    </script>
+</body>
+</html>

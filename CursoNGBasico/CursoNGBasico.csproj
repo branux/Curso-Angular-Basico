@@ -71,6 +71,8 @@
     <Content Include="01 - Módulos\1 - Módulo.html" />
     <Content Include="02 - Controllers\01 - Estrutura.html" />
     <Content Include="02 - Controllers\02 - Usando objetos no model.html" />
+    <Content Include="02 - Controllers\03 - Usando AS.html" />
+    <Content Include="03 - %24Http\02 - Get - Usando %24inject.html" />
     <Content Include="03 - %24Http\01 - Get.html" />
     <Content Include="04 - Directives\5.1 - filters.html" />
     <Content Include="04 - Directives\5.2 - filters.html" />

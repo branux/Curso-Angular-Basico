@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Diretivas</title>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="MainController">
+    <h2>Diretiva como Elemento</h2>
+    <fn-contato></fn-contato>
+    <hr />
+    <h2>Diretiva como atributo</h2>
+    <div fn-contato></div>
+    <hr />
+    <h2>Diretiva na class</h2>
+    <div class="fn-contato"></div>
+
+    <script src="../Scripts/angular.min.js"></script>
+    <script>
+        (function () {
+            "use strict";
+
+            /*
+            **Restrict
+            'A' - only matches attribute name
+            'E' - only matches element name
+            'C' - only matches class name
+            'M' - only matches comment
+            */
+
+            angular.module("app", [])
+                .directive("fnContato",[FNContato])
+                .controller("MainController", ["$scope", MainController]);
+
+            function FNContato() {
+                return {
+                    restrict: "AEC",
+                    template:'<div>Nome: {{contato.nome}} | Sobrenome: {{contato.sobrenome}}</div>'
+                };
+            };
+
+            function MainController($scope) {
+                $scope.contato = { nome: "Fabiano Alberto", sobrenome: "Nalin" };
+            };
+        }());
+    </script>
+</body>
+</html>
